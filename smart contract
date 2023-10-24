@@ -2,7 +2,6 @@
 pragma solidity >=0.7.0 <0.9.0;
 import "./RecoveryContract.sol";
 import "./GlucoseMonitor.sol";
-//import "./RecoveryContract.sol";
 
 contract PatientMonitor {
   /* address private hospital; /* the address of the admin which presents the hospital
