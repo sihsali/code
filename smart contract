@@ -1,0 +1,70 @@
+// SPDX-License-Identifier: Unlicened
+pragma solidity >=0.7.0 <0.9.0;
+import "./RecoveryContract.sol";
+import "./GlucoseMonitor.sol";
+//import "./RecoveryContract.sol";
+
+contract PatientMonitor {
+  /* address private hospital; /* the address of the admin which presents the hospital
+    and deploys the smart contract */
+
+ struct Doctor{
+      bytes32 id; 
+      string doctorName;
+      address dev;
+      /*address fog;
+      uint releaseTime;
+      bool isAvailable;*/
+  }
+   Doctor[]  public doctors; /* list of doctors which allow to recover the failed service */
+
+   struct Ward{
+      bytes32 ID;
+      string wardName;
+      address dev;
+      address fog;
+      uint releaseTime;
+      bool isAvailable;
+  }
+   Ward  public ward;
+   struct Ambulance{
+      bytes32 ID;
+      address dev;
+      address fog;
+      uint releaseTime;
+      bool isAvailable; 
+  }
+ 
+struct CompositeService{
+    address devDoctor;
+    //address devAmbulance;
+    //address devWard;
+}
+
+struct Patient {
+    bytes32 ID; 
+    string patientName;
+   
+}
+
+   //address dev;
+    //address fog;
+    //CompositeService patientCservices;
+ 
+ 
+function glucoseMonitor(uint glucoseLevel, uint low, uint high)public  returns (uint code){
+    
+        GlucoseMonitor gm = new GlucoseMonitor();
+        
+        return gm.monitor(glucoseLevel, low, high);
+    }
+
+Doctor public doctor;
+Patient public patient;
+Ambulance  public ambulance;
+
+ constructor(){
+       patient = Patient(1,"Robert");
+        doctor(1,"John",msg.sender);
+   }
+}
